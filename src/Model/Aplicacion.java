@@ -45,7 +45,7 @@ public class Aplicacion {
     }
 
     public void aniadirUsuario(Persona persona) throws IOException {
-        if (estaUsuario(persona.getDNI()) == null && persona.getEdad() >= 18) {
+        if (estaUsuario(persona.getDNI()) == null && persona.getEdad() >= 18 && estaUsuario2(persona.getCorreo())== null) {
             listaUsuarios.add(persona);
             guardarCuentaEnArchivo(persona.getCorreo(), persona.getContrasena());
             System.out.println("Usuario añadido con exito a nuestra base de datos");
