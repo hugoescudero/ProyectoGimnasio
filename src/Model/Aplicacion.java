@@ -45,12 +45,12 @@ public class Aplicacion {
     }
 
     public void aniadirUsuario(Persona persona) throws IOException {
-        if (estaUsuario(persona.getDNI()) == null && persona.getEdad() >= 18 && estaUsuario2(persona.getCorreo())== null) {
+        if (estaUsuario(persona.getDNI()) == null && estaUsuario2(persona.getCorreo())== null) {
             listaUsuarios.add(persona);
             guardarCuentaEnArchivo(persona.getCorreo(), persona.getContrasena());
             System.out.println("Usuario añadido con exito a nuestra base de datos");
         } else {
-            System.out.println("No se puede agregar porque ya está en nuestra base de datos o eres menor de edad");
+            System.out.println("No se puede agregar porque ya está en nuestra base de datos.");
         }
     }
 
@@ -62,14 +62,16 @@ public class Aplicacion {
         }
     }
 
-    public void iniciarSesion(String correo, String contrasena) {
+    public boolean iniciarSesion(String correo, String contrasena) {
         if (estaUsuario2(correo) != null) {
             if (estaUsuario2(correo).getContrasena().equalsIgnoreCase(contrasena)) {
                 System.out.println("Inicio de sesión correcto");
+                return true;
             } else {
                 System.out.println("El correo electrónico o la contraseña son incorrectos");
             }
         }
+        return false;
     }
     private void guardarCuentaEnArchivo(String correo, String contraseña) throws IOException {
         FileWriter writer = new FileWriter("cuentasGimnasio.txt", true);

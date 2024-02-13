@@ -8,8 +8,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int edad, int telefono, String nombre, String apellido1, String apellido2, String DNI, String correo,String contrasena,String genero, double peso, int altura) {
-        this.edad = edad;
+    public Persona(int telefono, String nombre, String apellido1, String apellido2, String DNI, String correo,String contrasena) {
         this.telefono = telefono;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -17,14 +16,6 @@ public class Persona {
         this.DNI = DNI;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.altura = altura;
-        this.peso = peso;
-        this.genero = genero;
-        if (genero.equalsIgnoreCase("Hombre")){
-            calorias = ((10*peso)+(6.25*altura)-(5*edad)+5)*1.5;
-        } else if (genero.equalsIgnoreCase("Mujer")) {
-            calorias = ((10*peso)+(6.25*altura)-(5*edad)-161)*1.5;
-        }
     }
 
     public void mostrarDatos(){
