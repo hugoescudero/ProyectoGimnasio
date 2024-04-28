@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Scanner;
 
 class Interfaz extends JFrame {
 
@@ -131,11 +132,32 @@ class Interfaz extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+        /*SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new Interfaz();
             }
-        });
+        });*/
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Chatbot chatbot = new Chatbot("Fitesc", "Hugo");
+
+        boolean comprobacion;
+        System.out.println("Bienvenido a la aplicación FITESC");
+
+        do {
+            System.out.println("¿En qué puedo ayudarle?");
+            String mensaje = sc.nextLine();
+
+            chatbot.calorias(mensaje);
+            chatbot.entrenador(mensaje);
+            chatbot.clase(mensaje);
+
+            System.out.println("¿Puedo ayudarle en algo más?");
+            //sc.nextLine();
+            mensaje = sc.nextLine();
+            comprobacion = chatbot.comprobacion(mensaje);
+        } while (comprobacion);
     }
 }
+
