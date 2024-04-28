@@ -8,12 +8,10 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int telefono, String nombre, String apellido1, String apellido2, String DNI, String correo,String contrasena) {
-        this.telefono = telefono;
+    public Persona(String nombre, String apellido1, String apellido2, String correo, String contrasena) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.DNI = DNI;
         this.correo = correo;
         this.contrasena = contrasena;
     }

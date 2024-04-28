@@ -13,17 +13,18 @@ import java.util.Scanner;
 class Interfaz extends JFrame {
 
     private Aplicacion fitesc;
-    private JTextField nombreField, apellido1Field, apellido2Field, edadField, telefonoField,
-            DNIField, pesoField, alturaField, sexoField, correoField, contrasenaField;
+    private JTextField nombreField, apellido1Field, apellido2Field, edadField, correoField, contrasenaField;
 
     public Interfaz() {
         fitesc = new Aplicacion("Fitesc", 1);
 
         // Configuración del JFrame
         setTitle("Fitesc");
+        ImageIcon icono = new ImageIcon("C:\\Users\\hugoe\\Pictures\\FITESC.png");
+        setIconImage(icono.getImage());
         setSize(400, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(13, 2));
+        setLayout(new GridLayout(8, 2));
 
         // Campos de entrada
         add(new JLabel("Nombre:"));
@@ -42,25 +43,6 @@ class Interfaz extends JFrame {
         edadField = new JTextField();
         add(edadField);
 
-        add(new JLabel("Número de Teléfono:"));
-        telefonoField = new JTextField();
-        add(telefonoField);
-
-        add(new JLabel("DNI:"));
-        DNIField = new JTextField();
-        add(DNIField);
-
-        add(new JLabel("Peso:"));
-        pesoField = new JTextField();
-        add(pesoField);
-
-        add(new JLabel("Altura:"));
-        alturaField = new JTextField();
-        add(alturaField);
-
-        add(new JLabel("Género (Hombre/Mujer):"));
-        sexoField = new JTextField();
-        add(sexoField);
 
         add(new JLabel("Correo Electrónico:"));
         correoField = new JTextField();
@@ -106,12 +88,9 @@ class Interfaz extends JFrame {
     private void registrarUsuario() {
         try {
             int edad = Integer.parseInt(edadField.getText());
-            int telefono = Integer.parseInt(telefonoField.getText());
-            double peso = Double.parseDouble(pesoField.getText());
-            int altura = Integer.parseInt(alturaField.getText());
 
-            Persona usuario = new Persona(telefono, nombreField.getText(), apellido1Field.getText(),
-                    apellido2Field.getText(), DNIField.getText(), correoField.getText(),
+            Persona usuario = new Persona(nombreField.getText(), apellido1Field.getText(),
+                    apellido2Field.getText(), correoField.getText(),
                     contrasenaField.getText());
 
             fitesc.aniadirUsuario(usuario);
@@ -127,18 +106,12 @@ class Interfaz extends JFrame {
 
         if (fitesc.iniciarSesion(correo, contrasena)) {
             JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+            funcionamiento();
         } else {
             JOptionPane.showMessageDialog(this, "Inicio de sesión fallido. Verifique sus credenciales.");
         }
     }
-
-        /*SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new Interfaz();
-            }
-        });*/
-
-    public static void main(String[] args) {
+    private void funcionamiento(){
         Scanner sc = new Scanner(System.in);
         Chatbot chatbot = new Chatbot("Fitesc", "Hugo");
 
@@ -158,6 +131,20 @@ class Interfaz extends JFrame {
             mensaje = sc.nextLine();
             comprobacion = chatbot.comprobacion(mensaje);
         } while (comprobacion);
+    }
+
+        /*SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Interfaz();
+            }
+        });*/
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Interfaz();
+            }
+        });
     }
 }
 
