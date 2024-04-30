@@ -119,7 +119,7 @@ class Interfaz extends JFrame {
         System.out.println("Bienvenido a la aplicación FITESC");
 
         do {
-            System.out.println("¿En qué puedo ayudarle?");
+            System.out.printf("¿En qué puedo ayudarle %s?\n",nombreField.getText());
             String mensaje = sc.nextLine();
 
             chatbot.calorias(mensaje);

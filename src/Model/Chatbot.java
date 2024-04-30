@@ -23,7 +23,7 @@ public class Chatbot {
             System.out.println("Claro, voy a calcular tus calorias de mantenimiento");
             System.out.println("Introduce tu peso");
             double peso = sc.nextDouble();
-            System.out.println("Introduce tu altura");
+            System.out.println("Introduce tu altura (en cm)");
             double altura = sc.nextDouble();
             System.out.println("Introduce tu género (Hombre/Mujer)");
             String sexo = sc.next();
@@ -40,9 +40,9 @@ public class Chatbot {
             if (contestacion.equalsIgnoreCase("Si")){
                 System.out.println("¿Calorias de ganancia o de pérdida de peso?");
                 String respuesta = sc.next();
-                if (respuesta.equalsIgnoreCase("Ganancia")){
+                if (respuesta.contains("Ganancia")){
                     System.out.println("Las calorías que tiene que consumir para ganar peso son: "+(calorias + 300));
-                } else if (respuesta.equalsIgnoreCase("Perdida")) {
+                } else if (respuesta.contains("Perdida")) {
                     System.out.println("Las calorías que tiene que consumir para perder peso son: "+(calorias - 300));
                 }
             }
@@ -100,7 +100,7 @@ public class Chatbot {
         if (mensaje.contains("clase")){
             System.out.println("¿En qué clase quieres reservar?");
             System.out.println("Zumba");
-            System.out.println("Aquagym.txt");
+            System.out.println("Aquagym");
             System.out.println("Bodycombat");
             String eleccionClase = sc.nextLine();
             if (eleccionClase.contains("Zumba")){
@@ -115,7 +115,7 @@ public class Chatbot {
                 } else if (!confirmacion(dia,hora)) {
                     System.out.println("De acuerdo, anulo la cita");
                 }
-            } else if (eleccionClase.contains("Aquagym.txt")) {
+            } else if (eleccionClase.contains("Aquagym")) {
                 String clase = "Aquagym";
                 System.out.println("¿A nombre de quién?");
                 String usuario = sc.next();
